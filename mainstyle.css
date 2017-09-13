@@ -1,0 +1,94 @@
+body{
+    background: #ffd;
+    color: #770;
+    padding: 10px;
+    
+    animation-name: background-color-cycle;
+    animation-duration: 10s;
+    animation-timing-function: normal;
+    animation-delay: 0s;
+    animation-fill-mode: none;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    animation-direction: alternate;
+}
+h1{
+    font-family: arial;
+}
+nav{
+    border-radius: 10px;
+    background: #bb3;
+    display: flex;
+    padding: 10px;
+    color: #550;
+}
+nav ul {
+    list-style-image: none;
+}
+nav li {
+    display: inline-block;
+    padding: 0 10px;
+}
+nav a {
+    text-decoration: none;
+    color: #770;
+}
+main {
+    background: #ffc;
+    display: flex;
+}
+.sidebar {
+    margin-right: 25px;
+    padding: 10px;
+}
+.sidebar img {
+    width: 200px;
+}
+.content {
+    flex: 1;
+    padding: 15px;
+}
+.interests header {
+    font-size: 1.25em;
+}
+.emoji {
+    animation-name: emoji;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-fill-mode: none;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    animation-direction: normal;
+}
+@keyframes emoji {
+    0% {
+    transform: translate(0px, 0px);
+    }
+    17% {
+    transform: translate(0px, -10px);
+    }
+    32% {
+    transform: translate(0px, 0px);
+    }
+    48% {
+    transform: translate(0px, 0px);
+    }
+    63% {
+    transform: translate(0px, -10px);
+    }
+    79% {
+    transform: translate(0px, 0px);
+    }
+    100% {
+    transform: translate(0px, 0px);
+    }
+}
+@keyframes background-color-cycle{
+    0% {
+        background: #ffe;
+    }
+    100%{
+        background: #ffc;
+    }
+}
