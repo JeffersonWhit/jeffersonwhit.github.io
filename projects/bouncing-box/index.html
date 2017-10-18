@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bouncing Box</title>
+	<script src="jquery.min.js"></script>
+
+	<!-- BEGIN CSS -->
+	<style>
+		/* TODO 1 */
+		body {
+			background-image: url('/projects/bouncing-box/dark-triangles.png');
+		}
+		
+		@font-face {
+			font-family: 'BadaBoom BB';
+			src: url('/projects/bouncing-box/BadaBoomBB/BadaBoomBB.eot');
+			src: url('/projects/bouncing-box/BadaBoomBB/BadaBoomBB.eot?#iefix') format('embedded-opentype'),
+				url('/projects/bouncing-box/BadaBoomBB/BadaBoomBB.woff') format('woff'),
+				url('/projects/bouncing-box/BadaBoomBB/BadaBoomBB.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+		
+		[class="box"] {
+			display: block;
+			position: absolute;
+			width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+			background-color: white;
+			font-size: 300%;
+			text-align: center;
+			border-radius: 0px;
+			font-family: BadaBoom BB;
+			font-size: 700px;
+		}
+	</style>
+
+</head>
+<body class="board">
+	<!-- HTML for the box -->
+	<div class="box">?</div>
+
+	<!-- BEGIN JAVASCRIPT -->
+	<script>
+		(function(){
+			'use strict'
+
+			// Variable declarations
+			var box;
+			var boardWidth;
+			var update;
+			var handleBoxClick;
+
+			// jQuery stuff setup for you
+			box = $('.box');
+			boardWidth = $('.board').width();
+
+			// Initialize Variables
+            var position = 0;
+            var posTopBase = 0;
+            var posTop = 0;
+            var points = 0;
+            var speed = 10;
+            var direction = 1;
+            var modifier = 0.05;
+            var colorAdd = 255;
+            var combo = 0;
+            var fontSize = 700;
+            
+            box.css('left', position);
+            box.text(points);
+         
+			setInterval(update, 1);
+			
+			update = function() {
+				//Handles Horizontal Movement
+			    position = position + (speed * direction * modifier);
+			    box.css('left', position);
+			    if(position > (boardWidth - box.width())){
+			        direction = direction * -1;
+			        position = boardWidth - box.width();
+			    }
+			    if(position < 0){
+			        direction = direction * -1;
+			        position = 0;
+			    }
+			    
+			    // Warning, Causes Flashing Lights
+			    posTop = Math.sin(Math.abs(position) / points + (points*0.001)) * points + posTopBase;
+			    box.css('top', posTop);
+			};
+
+
+			// Clicking Function
+			box.on('click', handleBoxClick);
+			
+			handleBoxClick = function() {
+				//Adds Speed and Points
+			    speed++;
+			    points++;
+			    
+			    if(points >= 190){ var audio = new Audio('/projects/bouncing-box/meme.wav'); audio.play(); }
+			    
+			    //Makes the box Smaller
+			    box.css('width', box.width() - 8 );
+			    box.css('height', box.height() - 4 );
+			    posTopBase += 2;
+			    fontSize -= 4;
+			    
+			    //Randomizes Color
+			    if (colorAdd > 0) colorAdd--;
+			    box.css('background-color', 'rgb(' + (getRandomInt(0,255) + colorAdd) + ',' + (getRandomInt(0,255) + colorAdd) + ',' + (getRandomInt(0,255) + colorAdd) + ')');
+			    box.css('border-radius', points/2);
+			    box.css('font-size', fontSize);
+			    
+			    //Updates box and changes Direction
+			    direction = direction * -1;
+			    box.text(points);
+			};
+            
+            //Generates Random Int
+            function getRandomInt(min, max) {
+              min = Math.ceil(min);
+              max = Math.floor(max);
+              return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+            }
+            
+			//this calls update every 50 milliseconds
+			setInterval(update, 1);
+			// this calls the handle handleBoxClick function every time the box is clicked on
+			box.on('click', handleBoxClick);
+		})();
+	</script>
+</body>
+</html>

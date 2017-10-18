@@ -1,16 +1,7 @@
 body{
-    background: #ffd;
+    background: #ffd url("/src/space-background-repeating.jpg");
     color: #770;
     padding: 10px;
-    
-    animation-name: background-color-cycle;
-    animation-duration: 10s;
-    animation-timing-function: normal;
-    animation-delay: 0s;
-    animation-fill-mode: none;
-    animation-iteration-count: infinite;
-    animation-play-state: running;
-    animation-direction: alternate;
 }
 h1{
     font-family: arial;
@@ -82,13 +73,5 @@ main {
     }
     100% {
     transform: translate(0px, 0px);
-    }
-}
-@keyframes background-color-cycle{
-    0% {
-        background: #ffe;
-    }
-    100%{
-        background: #ffc;
     }
 }
