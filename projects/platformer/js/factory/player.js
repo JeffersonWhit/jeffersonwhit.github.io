@@ -130,12 +130,12 @@
                 asset.body.bounce.y = 0;
                 game.add.tween(asset.body).to( { y: asset.body.y -100 }, 1000, Phaser.Easing.Linear.None, true);
 
-                asset.body.velocity.x = 200 * _direction;
+                asset.body.velocity.x = 100 * _direction;
                 asset.x += xOffset * _direction;
                 asset.y += yOffset;
             };
             state.exit = function() {
-                asset.body.bounce.y = 0.4;
+                asset.body.bounce.y = 0.1;
                 asset.x -= xOffset * _direction;
                 asset.y -= yOffset;
             };
