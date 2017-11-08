@@ -3,6 +3,22 @@
     <head>
         <title>Jeffrey's Medeocre Website</title>
         <link rel="stylesheet" href="mainstyle.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script>
+        $(document).ready(function(){
+            
+            $('ul.professional-interests').hide();
+            
+            $('button').click(function(){
+                $('ul.professional-interests').slideToggle();
+                $('button').slideToggle();
+            })
+            
+            $('.emoji').click(function(){
+                //Toggle Animation
+            })
+        });
+        </script>
     </head>
     <body>
         <div id="all-contents">
@@ -27,6 +43,20 @@
                             <li>Art</li>
                             <li>Games</li>
                         </ul>
+                    </section>
+                </div>
+            </main>
+            <main>
+                <div class="content">
+                    <header>Professional Interests</header>
+                    <section class="interests">
+                        <ul class="professional-interests">
+                            <li>Game Development</li>
+                            <li>Digital Graphics</li>
+                            <li>Directing the Composition of Music</li>
+                            <li>Developing Websites and Services</li>
+                        </ul>
+                        <button>Show Interests</button>
                     </section>
                 </div>
             </main>
