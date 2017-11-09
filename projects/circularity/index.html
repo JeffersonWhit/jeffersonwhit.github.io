@@ -45,7 +45,7 @@
                 // ALL CODE GOES BELOW HERE                                   //
                 ////////////////////////////////////////////////////////////////
                 
-                var i, circle, circles
+                var i, circle, circles;
                 
                 var desAmount = 100;
                 var mouseDown = false;
@@ -88,20 +88,20 @@
                         
                         if (circle.x > canvas.width + circle.radius) {
                             circle.x = 1 - circle.radius;
-                            if(circles.length > desAmount){ circles.splice(circle, 1) }
+                            if(circles.length > desAmount){ circles.splice(circle, 1); }
                             
                         } else if (circle.x < 0 - circle.radius) {
                             circle.x = canvas.width + circle.radius - 1;
-                            if(circles.length > desAmount){ circles.splice(circle, 1) }
+                            if(circles.length > desAmount){ circles.splice(circle, 1); }
                         }
                         
                         if (circle.y < 0 - circle.radius) {
                             circle.y = canvas.height + circle.radius - 1;
-                            if(circles.length > desAmount){ circles.splice(circle, 1) }
+                            if(circles.length > desAmount){ circles.splice(circle, 1); }
                             
                         } else if (circle.y > canvas.height + circle.radius) {
-                            circle.y = 1 - circle.radius
-                            if(circles.length > desAmount){ circles.splice(circle, 1) }
+                            circle.y = 1 - circle.radius;
+                            if(circles.length > desAmount){ circles.splice(circle, 1); }
                             
                         }
                         
@@ -111,11 +111,11 @@
                     
                     canvas.onmousedown = function(){
                         mouseDown = true;
-                    }
+                    };
                     
                     canvas.onmouseup = function(){
                         mouseDown = false;
-                    }
+                    };
                     
                     if(mouseDown){
                         createCircle();
