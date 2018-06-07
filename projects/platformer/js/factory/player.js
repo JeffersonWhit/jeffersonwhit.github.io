@@ -157,6 +157,7 @@
             asset.animations.play('die');
             asset.animations.currentAnim.onComplete.addOnce(function() {
                 console.log('die complete!');
+                location.reload();
                 asset.destroy();
             }, this);
             setState(_die);

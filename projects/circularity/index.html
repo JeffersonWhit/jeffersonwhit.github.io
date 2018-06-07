@@ -63,6 +63,7 @@
                     circle = draw.randomCircleInArea(canvas, false, false, '#CCC', 2);
                     
                     physikz.addRandomVelocity(circle, canvas);
+                    
                     circles.push(circle);
                     view.addChild(circle);
                 }
@@ -88,20 +89,20 @@
                         
                         if (circle.x > canvas.width + circle.radius) {
                             circle.x = 1 - circle.radius;
-                            if(circles.length > desAmount){ circles.splice(circle, 1); }
+                            if(circles.length > desAmount){ view.removeChild(circle); desAmount += 1; }
                             
                         } else if (circle.x < 0 - circle.radius) {
                             circle.x = canvas.width + circle.radius - 1;
-                            if(circles.length > desAmount){ circles.splice(circle, 1); }
+                            if(circles.length > desAmount){ view.removeChild(circle); desAmount += 1; }
                         }
                         
                         if (circle.y < 0 - circle.radius) {
                             circle.y = canvas.height + circle.radius - 1;
-                            if(circles.length > desAmount){ circles.splice(circle, 1); }
+                            if(circles.length > desAmount){ view.removeChild(circle); desAmount += 1; }
                             
                         } else if (circle.y > canvas.height + circle.radius) {
                             circle.y = 1 - circle.radius;
-                            if(circles.length > desAmount){ circles.splice(circle, 1); }
+                            if(circles.length > desAmount){ view.removeChild(circle); desAmount += 1; }
                             
                         }
                         
